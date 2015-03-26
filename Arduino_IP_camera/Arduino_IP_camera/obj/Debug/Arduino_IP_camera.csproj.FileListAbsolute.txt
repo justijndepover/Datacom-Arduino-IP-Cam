@@ -1,0 +1,13 @@
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe.config
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.pdb
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csprojResolveAssemblyReference.cache
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\MainWindow.baml
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\MainWindow.g.cs
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\App.g.cs
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera_MarkupCompile.cache
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.g.resources
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.Properties.Resources.resources
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csproj.GenerateResource.Cache
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
+C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb

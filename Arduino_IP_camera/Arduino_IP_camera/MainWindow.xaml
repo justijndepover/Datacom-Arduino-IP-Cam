@@ -1,0 +1,59 @@
+﻿<Window x:Class="Arduino_IP_camera.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="1200" Width="900" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="700" />
+            <RowDefinition Height="300" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        
+        <Image Name="imgScreen" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"/>
+        <Grid Grid.Row="1" Grid.Column="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Grid.Row="2" Margin="10" Name="btnDown" Click="btnArrow_Click" Tag="down">
+                <Image Source="/images/down.png"/>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="1" Margin="10" Name="btnLeft" Click="btnArrow_Click" Tag="left">
+                <Image Source="/images/left.png"/>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="1" Margin="10" Name="btnRight" Click="btnArrow_Click" Tag="right">
+                <Image Source="/images/right.png"/>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="0" Margin="10" Name="btnUp" Click="btnArrow_Click" Tag="up">
+                    <Image Source="/images/up.png"/>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="0" Margin="10" Name="btnUpLeft" Click="btnArrow_Click" Tag="upleft">
+                <Image Source="/images/upleft.png"/>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="2" Margin="10" Name="btnDownLeft" Click="btnArrow_Click" Tag="downleft">
+                <Image Source="/images/downleft.png"/>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="0" Margin="10" Name="btnUpRight" Click="btnArrow_Click" Tag="upright">
+                <Image Source="/images/upright.png"/>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="2" Margin="10" Name="btnDownRight" Click="btnArrow_Click" Tag="downright">
+                <Image Source="/images/downright.png"/>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="1" Margin="10" Name="btnHome" Tag="home" Click="btnArrow_Click" Content="Home"/>
+        </Grid>
+        <Slider Name="sldZoom" Minimum="1" Maximum="9999" Grid.Column="2" Grid.Row="3" Margin="10" ValueChanged="sldZoom_ValueChanged" />
+    </Grid>
+</Window>
