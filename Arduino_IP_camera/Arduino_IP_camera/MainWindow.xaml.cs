@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO.Ports;
 
 namespace Arduino_IP_camera
 {
@@ -28,8 +29,11 @@ namespace Arduino_IP_camera
         private const string PASSWORD = "niets";
         private BitmapImage _image;
         private int Zoom = 0;
+        SerialPort port;
 
         BackgroundWorker bw = new BackgroundWorker();
+
+        string ReceivedMessage;
 
         public BitmapImage Image
         {
@@ -47,12 +51,26 @@ namespace Arduino_IP_camera
             bw.WorkerSupportsCancellation = true;
             bw.DoWork += bw_DoWork;
             bw.RunWorkerAsync();
+
+            port = new SerialPort("COM1");
+            port.BaudRate = 9600;
+            port.Open();
+            port.DataReceived += port_DataReceived;
+        }
+
+        void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                ReceivedMessage = port.ReadExisting();
+                txbAntwoord.Text = ReceivedMessage;
+            }));
         }
 
         #region Backgroundworker Image
         private void GetImage()
         {
-            while(bw.IsBusy)
+            while (bw.IsBusy)
             {
                 try
                 {
@@ -79,7 +97,7 @@ namespace Arduino_IP_camera
                 {
 
                 }
-                
+
             }
         }
 
@@ -107,6 +125,7 @@ namespace Arduino_IP_camera
         }
         #endregion
 
+        #region move camera
         private void btnArrow_Click(object sender, RoutedEventArgs e)
         {
             MoveCamera(((Button)sender).Tag.ToString());
@@ -114,13 +133,19 @@ namespace Arduino_IP_camera
 
         private void MoveCamera(string direction)
         {
-            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?move="+direction, IPADDRESS);
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?move=" + direction, IPADDRESS);
             PostRequest(link);
         }
 
         private void ZoomCamera()
         {
-            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?zoom="+Zoom, IPADDRESS);
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?zoom=" + Zoom, IPADDRESS);
+            PostRequest(link);
+        }
+
+        private void ZoomCameraRelative(int value)
+        {
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=" + value, IPADDRESS);
             PostRequest(link);
         }
 
@@ -134,7 +159,7 @@ namespace Arduino_IP_camera
                 new NetworkCredential(LOGIN, PASSWORD));
             req.Credentials = cc;
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-            res.Close(); 
+            res.Close();
         }
 
         private void sldZoom_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -142,6 +167,42 @@ namespace Arduino_IP_camera
             Zoom = (int)sldZoom.Value;
             ZoomCamera();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.LeftCtrl && e.Key != Key.RightCtrl)
+            {
+                switch (e.Key)
+                {
+                    case Key.Up:
+                        MoveCamera("up");
+                        break;
+                    case Key.Down:
+                        MoveCamera("down");
+                        break;
+                    case Key.Left:
+                        MoveCamera("left");
+                        break;
+                    case Key.Right:
+                        MoveCamera("right");
+                        break;
+                }
+            }
+            else if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+            {
+                if (e.Key == Key.Up)
+                {
+                    ZoomCameraRelative(100);
+                }
+
+                if (e.Key == Key.Down)
+                {
+                    ZoomCameraRelative(-100);
+                }
+            }
+
+        }
+        #endregion
 
     }
 }

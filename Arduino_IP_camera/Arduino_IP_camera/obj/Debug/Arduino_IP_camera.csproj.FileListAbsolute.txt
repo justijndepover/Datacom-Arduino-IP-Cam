@@ -11,3 +11,6 @@ C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_
 C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csproj.GenerateResource.Cache
 C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
 C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb
+C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe.config
+C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
+C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb

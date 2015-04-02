@@ -55,5 +55,6 @@
             <Button Grid.Column="1" Grid.Row="1" Margin="10" Name="btnHome" Tag="home" Click="btnArrow_Click" Content="Home"/>
         </Grid>
         <Slider Name="sldZoom" Minimum="1" Maximum="9999" Grid.Column="2" Grid.Row="3" Margin="10" ValueChanged="sldZoom_ValueChanged" />
+        <TextBlock Name="txbAntwoord" />
     </Grid>
 </Window>
