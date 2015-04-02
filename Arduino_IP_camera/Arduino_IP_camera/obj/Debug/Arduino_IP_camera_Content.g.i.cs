@@ -8,8 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/down.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/downleft.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/downright.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/left.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/right.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/up.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/upleft.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/upright.png")]
 

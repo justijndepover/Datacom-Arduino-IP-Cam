@@ -52,18 +52,51 @@ namespace Arduino_IP_camera
             bw.DoWork += bw_DoWork;
             bw.RunWorkerAsync();
 
+<<<<<<< HEAD
+            try
+            {
+                port = new SerialPort("COM4");
+                port.BaudRate = 9600;
+                port.Open();
+                port.DataReceived += port_DataReceived;
+            }
+            catch (Exception)
+            {
+                
+            }
+            
+=======
             port = new SerialPort("COM4");
             port.BaudRate = 9600;
             port.Open();
             port.DataReceived += port_DataReceived;
+>>>>>>> origin/master
         }
 
         void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
+<<<<<<< HEAD
+                ReceivedMessage = "";
+                ReceivedMessage = port.ReadLine();
+                ReceivedMessage = ReceivedMessage.Replace("\r", "");
+ 
+                if (ReceivedMessage == "1")
+                {
+                    MoveCamera("home");
+                    MessageBoxResult mr = MessageBox.Show("Er staat iemand aan de deur, Wilt u de persoon binnenlaten?", "bel", MessageBoxButton.YesNo);
+                    if (mr == MessageBoxResult.Yes)
+                    {
+                        port.WriteLine("2");
+                    }else if(mr == MessageBoxResult.No){
+                        port.WriteLine("3");
+                    }
+                }
+=======
                 ReceivedMessage = port.ReadLine();
                 txbAntwoord.Text = ReceivedMessage;
+>>>>>>> origin/master
             }));
         }
 
@@ -203,6 +236,11 @@ namespace Arduino_IP_camera
 
         }
         #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
     }
 }

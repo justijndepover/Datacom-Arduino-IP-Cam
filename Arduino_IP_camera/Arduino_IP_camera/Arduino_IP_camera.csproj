@@ -94,16 +94,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\down.png" />
     <Resource Include="images\downleft.png" />
     <Resource Include="images\downright.png" />
-    <Resource Include="images\upleft.png" />
-    <Resource Include="images\upright.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\down.png" />
     <Resource Include="images\left.png" />
     <Resource Include="images\right.png" />
     <Resource Include="images\up.png" />
+    <Resource Include="images\upleft.png" />
+    <Resource Include="images\upright.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

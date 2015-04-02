@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
+C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\
+=======
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\
+>>>>>>> origin/master
 Arduino_IP_camera
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\App.xaml
+=======
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\App.xaml
+>>>>>>> origin/master
 11151548125
 
 5-2017746502
