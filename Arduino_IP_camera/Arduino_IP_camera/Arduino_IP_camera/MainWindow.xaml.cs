@@ -52,7 +52,6 @@ namespace Arduino_IP_camera
             bw.DoWork += bw_DoWork;
             bw.RunWorkerAsync();
 
-<<<<<<< HEAD
             try
             {
                 port = new SerialPort("COM4");
@@ -64,20 +63,12 @@ namespace Arduino_IP_camera
             {
                 
             }
-            
-=======
-            port = new SerialPort("COM4");
-            port.BaudRate = 9600;
-            port.Open();
-            port.DataReceived += port_DataReceived;
->>>>>>> origin/master
         }
 
         void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
-<<<<<<< HEAD
                 ReceivedMessage = "";
                 ReceivedMessage = port.ReadLine();
                 ReceivedMessage = ReceivedMessage.Replace("\r", "");
@@ -89,14 +80,11 @@ namespace Arduino_IP_camera
                     if (mr == MessageBoxResult.Yes)
                     {
                         port.WriteLine("2");
-                    }else if(mr == MessageBoxResult.No){
+                    }else if(mr == MessageBoxResult.No)
+                    {
                         port.WriteLine("3");
                     }
                 }
-=======
-                ReceivedMessage = port.ReadLine();
-                txbAntwoord.Text = ReceivedMessage;
->>>>>>> origin/master
             }));
         }
 
@@ -235,12 +223,44 @@ namespace Arduino_IP_camera
             }
 
         }
-        #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string link = "";
+            switch (((Button)sender).Tag.ToString())
+            {
+                case "zoomin":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=200", IPADDRESS);
+                    break;
+                case "zoomuit":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=-200", IPADDRESS);
+                    break;
+                case "focusin":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rfocus=200", IPADDRESS);
+                    break;
+                case "focusuit":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rfocus=-200", IPADDRESS);
+                    break;
+                case "helderheidin":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rbrightness=200", IPADDRESS);
+                    break;
+                case "helderheiduit":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rbrightness=-200", IPADDRESS);
+                    break;
+                case "zwartwit":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=on", IPADDRESS);
+                    break;
+                case "kleur":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=off", IPADDRESS);
+                    break;
+                default:
+                    break;
+            }
+            if (link != "")
+            {
+                PostRequest(link);
+            }
         }
-
+        #endregion
     }
 }

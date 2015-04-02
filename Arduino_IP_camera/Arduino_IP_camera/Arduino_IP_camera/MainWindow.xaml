@@ -83,17 +83,17 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Content="+" FontSize="30" />
+                <Button Content="+" FontSize="30" Click="Button_Click" Tag="helderheidin"/>
                 <TextBlock Text="HELDERHEID" Grid.Column="1"/>
-                <Button Content="-" FontSize="30" Grid.Column="2" />
+                <Button Content="-" FontSize="30" Grid.Column="2" Click="Button_Click" Tag="helderheiduit" />
             </Grid>
             <Grid Height="40" Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Content="ZWART/WIT" />
-                <Button Content="KLEUR" Grid.Column="1" />
+                <Button Content="ZWART/WIT" Click="Button_Click" Tag="zwartwit"/>
+                <Button Content="KLEUR" Grid.Column="1" Click="Button_Click" Tag="kleur"/>
             </Grid>
         </StackPanel>
         

@@ -41,3 +41,6 @@ D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Ar
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.Properties.Resources.resources
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csproj.GenerateResource.Cache
 >>>>>>> origin/master
+C:\Users\Justijn\Desktop\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe.config
+C:\Users\Justijn\Desktop\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
+C:\Users\Justijn\Desktop\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb
