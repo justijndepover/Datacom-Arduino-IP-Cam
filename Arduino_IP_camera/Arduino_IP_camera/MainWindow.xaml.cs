@@ -52,7 +52,7 @@ namespace Arduino_IP_camera
             bw.DoWork += bw_DoWork;
             bw.RunWorkerAsync();
 
-            port = new SerialPort("COM1");
+            port = new SerialPort("COM4");
             port.BaudRate = 9600;
             port.Open();
             port.DataReceived += port_DataReceived;
@@ -62,7 +62,7 @@ namespace Arduino_IP_camera
         {
             this.Dispatcher.Invoke(new Action(() =>
             {
-                ReceivedMessage = port.ReadExisting();
+                ReceivedMessage = port.ReadLine();
                 txbAntwoord.Text = ReceivedMessage;
             }));
         }

@@ -1,35 +1,69 @@
+#include <SimpleTimer.h>
 #include <LiquidCrystal.h>
 LiquidCrystal lcd(6,7,5,4,3,2);
+SimpleTimer timer;
 int button11 = 0;
-int sensorPin = A5;
+int sensorPinTemp = A5;
+int sensorPinLV = A5;
 bool toggle = false;
-bool deBel = false;
+int tmrWelkomId;
+int tmrBelId;
+bool welkomTempToggle=false;
+double tempmeter = 0;
+double lvmeter=0;
 
 void setup() {
   pinMode(11, INPUT_PULLUP);
   Serial.begin(9600);
-  
+  tmrWelkomId=timer.setInterval(3000,timerWelkomEvent);
+  timer.enable(tmrWelkomId);
+  tmrBelId=timer.setInterval(10000,timerBelEvent);
+  timer.disable(tmrBelId);
   lcd.begin(16,2);
   lcd.setCursor(0,0);
-  lcd.clear();
-  
-  lcd.print("Welkom!");
+  lcd.clear();  
 }
 
-void loop() {  
+void loop() { 
+  timer.run();
+  leesSerialPort(); 
   checkDeBel();
-  if(deBel==false){
+}
+
+void timerWelkomEvent(){
+  welkomTempToggle = !welkomTempToggle;
+  if(welkomTempToggle==true){
+    lcd.clear();
+    lcd.print("Welkom!");
+  }
+  else{  
+    lcd.clear();    
     meetTemp();
+    meetLV();
+    lcd.setCursor(0,0);
+    lcd.print("T:"+String(tempmeter)+"C");
+    lcd.setCursor(0,1);
+    lcd.print("LV:"+String(lvmeter)+"%");
   }
 }
 
-double tempmeter = 0;
+void timerBelEvent(){
+  timer.enable(tmrWelkomId);
+  timer.disable(tmrBelId);
+}
+
+
 void meetTemp(){
-  double buffertempmeter=(((analogRead(sensorPin)*4.9) / 1024.0)-0.5)*100;  
+  double buffertempmeter=(((analogRead(sensorPinTemp)*4.9) / 1024.0)-0.5)*100;  
   if(tempmeter!=buffertempmeter){
     tempmeter=buffertempmeter;
-    lcd.clear();
-    lcd.print(String(buffertempmeter)+"C");
+  }
+}
+
+void meetLV(){
+  double bufferlv = analogRead(sensorPinLV);
+  if(lvmeter!=bufferlv){  
+    lvmeter=bufferlv;
   }
 }
 
@@ -40,16 +74,33 @@ void checkDeBel(){
     if(toggle==false)
     {
       lcd.clear();
-      deBel=true;
+      lcd.print("Ring! Ring!");
       // de bel gaat
       Serial.println("1");
+      timer.disable(tmrWelkomId);      
     }
     toggle=true;
   }
   else{
-    if(toggle==true){
-      lcd.clear();
-    }
     toggle=false;
   }
+}
+
+void leesSerialPort(){
+  if(Serial.available()>0){
+    char incomingChar = Serial.read();
+    if(incomingChar=='2'){
+      lcd.clear();
+      lcd.print("U mag binnen");
+      lcd.setCursor(0,1);
+      lcd.print("komen");
+      timer.enable(tmrBelId);
+    }else if(incomingChar=='3'){
+      lcd.clear();
+      lcd.print("U mag niet");
+      lcd.setCursor(0,1);
+      lcd.print("binnen komen");
+      timer.enable(tmrBelId);
+    }
+  } 
 }

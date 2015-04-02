@@ -14,3 +14,16 @@ C:\Users\Justijn\Documents\Visual Studio 2013\Projects\datacommunicatie\Arduino_
 C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe.config
 C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
 C:\Users\Justijn\Documents\GitHub\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe.config
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.exe
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.pdb
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.pdb
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csprojResolveAssemblyReference.cache
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\MainWindow.baml
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\MainWindow.g.cs
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\App.g.cs
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera_MarkupCompile.cache
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.g.resources
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.Properties.Resources.resources
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csproj.GenerateResource.Cache
