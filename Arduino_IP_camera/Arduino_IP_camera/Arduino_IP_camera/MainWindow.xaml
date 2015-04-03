@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Arduino_IP_camera.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="1200" Width="900" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closed">
+        Title="MainWindow" Height="1200" Width="900" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closed" Focusable="True" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -56,7 +56,7 @@
             <Button Grid.Column="1" Grid.Row="1" Margin="10" Name="btnHome" Tag="home" Click="btnArrow_Click" Content="HOME"/>
         </Grid>
         <StackPanel Grid.Row="1" Margin="10" Width="250">
-            <Slider Name="sldZoom" Minimum="1" Maximum="9999" Grid.Column="1" Grid.Row="3" Margin="0 0 0 10" ValueChanged="sldZoom_ValueChanged" />
+            <Slider Name="sldZoom" Minimum="1" Maximum="9999" Grid.Column="1" Grid.Row="3" Margin="0 0 0 10" ValueChanged="sldZoom_ValueChanged" Focusable="False" />
             <Grid Height="40" Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -72,9 +72,9 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Content="+" FontSize="30" Click="Button_Click" Tag="focusin" />
-                <TextBlock Text="FOCUS" Grid.Column="1"/>
+                </Grid.ColumnDefinitions> 
+                <Button Content="+" FontSize="30" Click="Button_Click" Tag="focusin"/>
+                <Button Tag="autofocus" Content="FOCUS" Grid.Column="1" Click="Button_Click"/>
                 <Button Content="-" FontSize="30" Grid.Column="2" Click="Button_Click" Tag="focusuit" />
             </Grid>
             <Grid Height="40" Margin="0 0 0 10">

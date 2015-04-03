@@ -9,6 +9,7 @@
             <Setter Property="Foreground" Value="#259276" />
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Focusable" Value="False" />
         </Style>
         
         <Style TargetType="TextBlock" x:Name="txbText">

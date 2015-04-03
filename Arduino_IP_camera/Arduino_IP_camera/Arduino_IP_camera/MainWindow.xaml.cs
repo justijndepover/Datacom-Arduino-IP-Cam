@@ -44,6 +44,7 @@ namespace Arduino_IP_camera
         public MainWindow()
         {
             InitializeComponent();
+            this.Focus();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -63,6 +64,7 @@ namespace Arduino_IP_camera
             {
                 
             }
+            this.Focus();
         }
 
         void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -191,7 +193,7 @@ namespace Arduino_IP_camera
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key != Key.LeftCtrl && e.Key != Key.RightCtrl)
+            if (!Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 switch (e.Key)
                 {
@@ -209,16 +211,16 @@ namespace Arduino_IP_camera
                         break;
                 }
             }
-            else if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 if (e.Key == Key.Up)
                 {
-                    ZoomCameraRelative(100);
+                    ZoomCameraRelative(500);
                 }
 
                 if (e.Key == Key.Down)
                 {
-                    ZoomCameraRelative(-100);
+                    ZoomCameraRelative(-500);
                 }
             }
 
@@ -230,16 +232,19 @@ namespace Arduino_IP_camera
             switch (((Button)sender).Tag.ToString())
             {
                 case "zoomin":
-                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=200", IPADDRESS);
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=500", IPADDRESS);
                     break;
                 case "zoomuit":
-                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=-200", IPADDRESS);
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rzoom=-500", IPADDRESS);
                     break;
                 case "focusin":
                     link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rfocus=200", IPADDRESS);
                     break;
                 case "focusuit":
                     link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rfocus=-200", IPADDRESS);
+                    break;
+                case "autofocus":
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?autofocus=on", IPADDRESS);
                     break;
                 case "helderheidin":
                     link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rbrightness=200", IPADDRESS);
@@ -248,10 +253,10 @@ namespace Arduino_IP_camera
                     link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?rbrightness=-200", IPADDRESS);
                     break;
                 case "zwartwit":
-                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=on", IPADDRESS);
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=off", IPADDRESS);
                     break;
                 case "kleur":
-                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=off", IPADDRESS);
+                    link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?ircutfilter=on", IPADDRESS);
                     break;
                 default:
                     break;
@@ -262,5 +267,6 @@ namespace Arduino_IP_camera
             }
         }
         #endregion
+
     }
 }
