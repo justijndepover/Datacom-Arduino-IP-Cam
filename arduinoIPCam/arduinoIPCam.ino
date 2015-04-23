@@ -4,13 +4,14 @@ LiquidCrystal lcd(6,7,5,4,3,2);
 SimpleTimer timer;
 int button11 = 0;
 int sensorPinTemp = A5;
-int sensorPinLV = A5;
+int sensorPinLV = A4;
 bool toggle = false;
 int tmrWelkomId;
 int tmrBelId;
+int tmrWachtOpAntwoordId;
 bool welkomTempToggle=false;
-double tempmeter = 0;
-double lvmeter=0;
+double tempmeter = 0.0;
+double lvmeter=0.0;
 
 void setup() {
   pinMode(11, INPUT_PULLUP);
@@ -19,6 +20,8 @@ void setup() {
   timer.enable(tmrWelkomId);
   tmrBelId=timer.setInterval(10000,timerBelEvent);
   timer.disable(tmrBelId);
+  tmrWachtOpAntwoordId = timer.setInterval(10000,timerWachtOpAntwoordEvent);
+  timer.disable(tmrWachtOpAntwoordId);
   lcd.begin(16,2);
   lcd.setCursor(0,0);
   lcd.clear();  
@@ -52,6 +55,11 @@ void timerBelEvent(){
   timer.disable(tmrBelId);
 }
 
+void timerWachtOpAntwoordEvent(){
+  timer.enable(tmrWelkomId);
+  timer.disable(tmrBelId);
+}
+
 
 void meetTemp(){
   double buffertempmeter=(((analogRead(sensorPinTemp)*4.9) / 1024.0)-0.5)*100;  
@@ -61,7 +69,7 @@ void meetTemp(){
 }
 
 void meetLV(){
-  double bufferlv = analogRead(sensorPinLV);
+  double bufferlv = ((double)analogRead(sensorPinLV))/1023.0*100;
   if(lvmeter!=bufferlv){  
     lvmeter=bufferlv;
   }
@@ -69,7 +77,6 @@ void meetLV(){
 
 void checkDeBel(){
   button11 = digitalRead(11);
-  
   if(button11 == LOW){
     if(toggle==false)
     {
@@ -77,7 +84,8 @@ void checkDeBel(){
       lcd.print("Ring! Ring!");
       // de bel gaat
       Serial.println("1");
-      timer.disable(tmrWelkomId);      
+      timer.disable(tmrWelkomId);
+      timer.enable(tmrWachtOpAntwoordId);    
     }
     toggle=true;
   }
@@ -90,12 +98,14 @@ void leesSerialPort(){
   if(Serial.available()>0){
     char incomingChar = Serial.read();
     if(incomingChar=='2'){
+      timer.disable(tmrWachtOpAntwoordId);   
       lcd.clear();
       lcd.print("U mag binnen");
       lcd.setCursor(0,1);
       lcd.print("komen");
       timer.enable(tmrBelId);
     }else if(incomingChar=='3'){
+      timer.disable(tmrWachtOpAntwoordId);   
       lcd.clear();
       lcd.print("U mag niet");
       lcd.setCursor(0,1);
