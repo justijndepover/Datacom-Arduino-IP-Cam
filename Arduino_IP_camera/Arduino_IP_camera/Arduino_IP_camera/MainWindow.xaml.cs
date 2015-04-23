@@ -16,6 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO.Ports;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Arduino_IP_camera
 {
@@ -67,27 +69,33 @@ namespace Arduino_IP_camera
             this.Focus();
         }
 
+
         void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            this.Dispatcher.Invoke(new Action(() =>
-            {
-                ReceivedMessage = "";
-                ReceivedMessage = port.ReadLine();
-                ReceivedMessage = ReceivedMessage.Replace("\r", "");
- 
-                if (ReceivedMessage == "1")
+                this.Dispatcher.Invoke(new Action(() =>
                 {
-                    MoveCamera("home");
-                    MessageBoxResult mr = MessageBox.Show("Er staat iemand aan de deur, Wilt u de persoon binnenlaten?", "bel", MessageBoxButton.YesNo);
-                    if (mr == MessageBoxResult.Yes)
+                    ReceivedMessage = "";
+                    ReceivedMessage = port.ReadLine();
+                    ReceivedMessage = ReceivedMessage.Replace("\r", "");
+
+                    if (ReceivedMessage == "1")
                     {
-                        port.WriteLine("2");
-                    }else if(mr == MessageBoxResult.No)
-                    {
-                        port.WriteLine("3");
+                        chksScan.IsChecked = false;
+                        MoveCamera("home");
+                        MessageBoxResult mr = MessageBox.Show("Er staat iemand aan de deur, Wilt u de persoon binnenlaten?", "bel", MessageBoxButton.YesNo);
+
+                        if (mr == MessageBoxResult.Yes)
+                        {
+                            port.WriteLine("2");
+                        }
+                        else if (mr == MessageBoxResult.No)
+                        {
+                            port.WriteLine("3");
+                        }
+                        port.DiscardInBuffer();
                     }
-                }
-            }));
+                }));
+            
         }
 
         #region Backgroundworker Image
@@ -266,7 +274,37 @@ namespace Arduino_IP_camera
                 PostRequest(link);
             }
         }
+
+        private void scanCamera(int pan, int tilt)
+        {
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?continuouspantiltmove="+ pan + "," + tilt, IPADDRESS);
+            PostRequest(link);
+        }
+
+        private void tilt(float value)
+        {
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?tilt=" + value, IPADDRESS);
+            PostRequest(link);
+        }
+
         #endregion
+
+        private void chksScan_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chksScan.IsChecked == true)
+            {
+                grdControl.IsEnabled = false;
+                stpControl.IsEnabled = false;
+                tilt(-30);
+                Zoom = 1;
+                ZoomCamera();
+                scanCamera(5, 0);
+            }else{
+                grdControl.IsEnabled = true;
+                stpControl.IsEnabled = true;
+                scanCamera(0, 0);
+            }
+        }
 
     }
 }
