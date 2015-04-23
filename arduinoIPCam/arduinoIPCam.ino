@@ -98,14 +98,16 @@ void leesSerialPort(){
   if(Serial.available()>0){
     char incomingChar = Serial.read();
     if(incomingChar=='2'){
-      timer.disable(tmrWachtOpAntwoordId);   
+      timer.disable(tmrWachtOpAntwoordId);
+      timer.disable(tmrWelkomId);  
       lcd.clear();
       lcd.print("U mag binnen");
       lcd.setCursor(0,1);
       lcd.print("komen");
       timer.enable(tmrBelId);
     }else if(incomingChar=='3'){
-      timer.disable(tmrWachtOpAntwoordId);   
+      timer.disable(tmrWachtOpAntwoordId);
+      timer.disable(tmrWelkomId);    
       lcd.clear();
       lcd.print("U mag niet");
       lcd.setCursor(0,1);
