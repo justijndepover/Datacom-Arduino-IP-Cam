@@ -193,12 +193,6 @@ namespace Arduino_IP_camera
             res.Close();
         }
 
-        private void sldZoom_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Zoom = (int)sldZoom.Value;
-            ZoomCamera();
-        }
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (!Keyboard.IsKeyDown(Key.LeftCtrl))

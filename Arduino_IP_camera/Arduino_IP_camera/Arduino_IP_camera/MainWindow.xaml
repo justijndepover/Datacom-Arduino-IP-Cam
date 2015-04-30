@@ -56,7 +56,6 @@
             <Button Grid.Column="1" Grid.Row="1" Margin="10" Name="btnHome" Tag="home" Click="btnArrow_Click" Content="HOME"/>
         </Grid>
         <StackPanel Grid.Row="1" Margin="10" Width="250" Name="stpControl">
-            <Slider Name="sldZoom" Minimum="1" Maximum="9999" Grid.Column="1" Grid.Row="3" Margin="0 0 0 10" ValueChanged="sldZoom_ValueChanged" Focusable="False" />
             <Grid Height="40" Margin="0 0 0 10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
