@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO.Ports;
+using System.Security.AccessControl;
 using System.Threading;
 using System.Windows.Threading;
 
@@ -32,6 +33,7 @@ namespace Arduino_IP_camera
         private BitmapImage _image;
         private int Zoom = 0;
         SerialPort port;
+        private bool enableControls = true;
 
         BackgroundWorker bw = new BackgroundWorker();
 
@@ -64,7 +66,7 @@ namespace Arduino_IP_camera
             }
             catch (Exception)
             {
-                
+
             }
             this.Focus();
         }
@@ -72,30 +74,30 @@ namespace Arduino_IP_camera
 
         void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-                this.Dispatcher.Invoke(new Action(() =>
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                ReceivedMessage = "";
+                ReceivedMessage = port.ReadLine();
+                ReceivedMessage = ReceivedMessage.Replace("\r", "");
+
+                if (ReceivedMessage == "1")
                 {
-                    ReceivedMessage = "";
-                    ReceivedMessage = port.ReadLine();
-                    ReceivedMessage = ReceivedMessage.Replace("\r", "");
+                    chksScan.IsChecked = false;
+                    MoveCamera("home");
+                    MessageBoxResult mr = MessageBox.Show("Er staat iemand aan de deur, Wilt u de persoon binnenlaten?", "bel", MessageBoxButton.YesNo);
 
-                    if (ReceivedMessage == "1")
+                    if (mr == MessageBoxResult.Yes)
                     {
-                        chksScan.IsChecked = false;
-                        MoveCamera("home");
-                        MessageBoxResult mr = MessageBox.Show("Er staat iemand aan de deur, Wilt u de persoon binnenlaten?", "bel", MessageBoxButton.YesNo);
-
-                        if (mr == MessageBoxResult.Yes)
-                        {
-                            port.WriteLine("2");
-                        }
-                        else if (mr == MessageBoxResult.No)
-                        {
-                            port.WriteLine("3");
-                        }
-                        port.DiscardInBuffer();
+                        port.WriteLine("2");
                     }
-                }));
-            
+                    else if (mr == MessageBoxResult.No)
+                    {
+                        port.WriteLine("3");
+                    }
+                    port.DiscardInBuffer();
+                }
+            }));
+
         }
 
         #region Backgroundworker Image
@@ -195,34 +197,37 @@ namespace Arduino_IP_camera
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!Keyboard.IsKeyDown(Key.LeftCtrl))
+            if (enableControls)
             {
-                switch (e.Key)
+                if (!Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    case Key.Up:
-                        MoveCamera("up");
-                        break;
-                    case Key.Down:
-                        MoveCamera("down");
-                        break;
-                    case Key.Left:
-                        MoveCamera("left");
-                        break;
-                    case Key.Right:
-                        MoveCamera("right");
-                        break;
+                    switch (e.Key)
+                    {
+                        case Key.Up:
+                            MoveCamera("up");
+                            break;
+                        case Key.Down:
+                            MoveCamera("down");
+                            break;
+                        case Key.Left:
+                            MoveCamera("left");
+                            break;
+                        case Key.Right:
+                            MoveCamera("right");
+                            break;
+                    }
                 }
-            }
-            else if (Keyboard.IsKeyDown(Key.LeftCtrl))
-            {
-                if (e.Key == Key.Up)
+                else if (Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    ZoomCameraRelative(500);
-                }
+                    if (e.Key == Key.Up)
+                    {
+                        ZoomCameraRelative(500);
+                    }
 
-                if (e.Key == Key.Down)
-                {
-                    ZoomCameraRelative(-500);
+                    if (e.Key == Key.Down)
+                    {
+                        ZoomCameraRelative(-500);
+                    }
                 }
             }
 
@@ -271,7 +276,7 @@ namespace Arduino_IP_camera
 
         private void scanCamera(int pan, int tilt)
         {
-            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?continuouspantiltmove="+ pan + "," + tilt, IPADDRESS);
+            string link = string.Format("http://{0}/axis-cgi/com/ptz.cgi?continuouspantiltmove=" + pan + "," + tilt, IPADDRESS);
             PostRequest(link);
         }
 
@@ -287,13 +292,17 @@ namespace Arduino_IP_camera
         {
             if (chksScan.IsChecked == true)
             {
+                enableControls = false;
                 grdControl.IsEnabled = false;
                 stpControl.IsEnabled = false;
                 tilt(-30);
                 Zoom = 1;
                 ZoomCamera();
                 scanCamera(5, 0);
-            }else{
+            }
+            else
+            {
+                enableControls = true;
                 grdControl.IsEnabled = true;
                 stpControl.IsEnabled = true;
                 scanCamera(0, 0);

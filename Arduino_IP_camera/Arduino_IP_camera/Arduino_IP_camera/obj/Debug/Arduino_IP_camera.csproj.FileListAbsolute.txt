@@ -24,3 +24,5 @@ D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-C
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.g.resources
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.Properties.Resources.resources
 D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\Arduino_IP_camera\obj\Debug\Arduino_IP_camera.csproj.GenerateResource.Cache
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.exe
+D:\OneDrive\School\Datacom\projecten\Datacom-Arduino-IP-Cam\Datacom-Arduino-IP-Cam\Arduino_IP_camera\Arduino_IP_camera\Arduino_IP_camera\bin\Debug\Arduino_IP_camera.pdb

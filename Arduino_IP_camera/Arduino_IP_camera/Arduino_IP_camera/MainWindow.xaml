@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Arduino_IP_camera.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="1200" Width="900" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closed" Focusable="True" KeyDown="Window_KeyDown">
+        Title="Arduino IP camera" Height="1200" Width="900" WindowState="Maximized" Loaded="Window_Loaded" Closing="Window_Closed" Focusable="True" KeyDown="Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
